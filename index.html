@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To the Future Teacher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Baloo+2:wght@400;700&family=Nunito:wght@400;600&family=Fredoka:wght@400;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #F7C948;
+            --accent-yellow: #FFD966;
+            --soft-cream: #FFF9ED;
+            --text-dark: #4A403A;
+            --sage-green: #A3B18A;
+            --light-gray: #F5F1EA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============ FLOATING BACKGROUND ELEMENTS ============ */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            background-image: url('assets/hero_background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.06;
+            font-size: 60px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 20%; right: 8%; animation-delay: 1s; }
+        .floating-element:nth-child(3) { top: 40%; left: 10%; animation-delay: 2s; }
+        .floating-element:nth-child(4) { top: 60%; right: 5%; animation-delay: 1.5s; }
+        .floating-element:nth-child(5) { bottom: 20%; left: 15%; animation-delay: 2.5s; }
+        .floating-element:nth-child(6) { bottom: 10%; right: 10%; animation-delay: 0.5s; }
+        .floating-element:nth-child(7) { top: 50%; left: 50%; animation-delay: 3s; }
+        .floating-element:nth-child(8) { bottom: 30%; right: 20%; animation-delay: 1.8s; }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .fade-up-delay-1 { animation-delay: 0.2s; }
+        .fade-up-delay-2 { animation-delay: 0.4s; }
+        .fade-up-delay-3 { animation-delay: 0.6s; }
+        .fade-up-delay-4 { animation-delay: 0.8s; }
+
+        /* ============ MAIN CONTENT ============ */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(247, 201, 72, 0.08) 0%, rgba(163, 177, 138, 0.06) 100%);
+            position: relative;
+        }
+
+        .hero-sunflower {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            max-width: 900px;
+            text-shadow: 0 0 20px rgba(247, 201, 72, 0.8), 0 0 40px rgba(247, 201, 72, 0.5);
+        }
+
+        .hero p {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: white;
+            max-width: 700px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        .about {
+            padding: 100px 20px;
+            background-color: var(--soft-cream);
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            text-shadow: 0 0 20px rgba(247, 201, 72, 0.8), 0 0 40px rgba(247, 201, 72, 0.5);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-yellow) 0%, var(--sage-green) 100%);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            perspective: 1000px;
+        }
+
+        .about-card {
+            background: transparent;
+            animation: fadeUp 1s ease forwards;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            min-height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+        }
+
+        .about-card:nth-child(1) { animation-delay: 0.2s; }
+        .about-card:nth-child(2) { animation-delay: 0.4s; }
+        .about-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .about-card:hover {
+            transform: rotateY(180deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .card-front {
+            background: white;
+            z-index: 2;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .about-card-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .about-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            font-size: 0.95rem;
+            color: #6B6B6B;
+            line-height: 1.7;
+        }
+
+        .appreciation {
+            margin-top: 60px;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(247, 201, 72, 0.1) 0%, rgba(163, 177, 138, 0.1) 100%);
+            border-radius: 20px;
+            border-left: 4px solid var(--primary-yellow);
+            text-align: center;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .appreciation p {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        /* ============ MOTIVATION SECTION ============ */
+        .motivation {
+            padding: 100px 20px;
+            background-color: white;
+        }
+
+        .motivation-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .sticky-note {
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .sticky-note:nth-child(1) { 
+            background-color: #FFF9ED;
+            border-top: 4px solid var(--primary-yellow);
+            animation-delay: 0.2s;
+        }
+
+        .sticky-note:nth-child(2) { 
+            background-color: #FFFBF0;
+            border-top: 4px solid var(--accent-yellow);
+            animation-delay: 0.4s;
+            transform: rotate(-2deg);
+        }
+
+        .sticky-note:nth-child(3) { 
+            background-color: #FFF7E6;
+            border-top: 4px solid var(--sage-green);
+            animation-delay: 0.6s;
+            transform: rotate(1deg);
+        }
+
+        .sticky-note:hover {
+            transform: translateY(-8px);
+        }
+
+        .sticky-note p {
+            font-family: 'Caveat', cursive;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .sticky-note::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            top: -10px;
+            right: 20px;
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            padding: 40px 20px;
+            background-color: var(--light-gray);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .footer-icons {
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .heart-pulse {
+            display: inline-block;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* ============ POPUP MODAL ============ */
+        .popup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .popup-modal.show {
+            display: flex;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #FFFBF0 100%);
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: popupBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            border: 3px solid var(--primary-yellow);
+        }
+
+        @keyframes popupBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .popup-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .popup-content h2 {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .popup-content p {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .popup-close-btn {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--accent-yellow) 100%);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 5px 15px rgba(247, 201, 72, 0.4);
+        }
+
+        .popup-close-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(247, 201, 72, 0.6);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-card {
+                padding: 30px;
+            }
+
+            .sticky-note p {
+                font-size: 1.1rem;
+            }
+
+            .appreciation {
+                padding: 30px;
+            }
+
+            .floating-element {
+                opacity: 0.03;
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 30px 15px;
+            }
+
+            .hero-sunflower {
+                font-size: 80px;
+                margin-bottom: 20px;
+            }
+
+            .about, .motivation {
+                padding: 60px 15px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 40px;
+            }
+
+            .about-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sunflower Popup Modal -->
+    <div class="popup-modal" id="sunflowerPopup">
+        <div class="popup-content">
+            <div class="popup-icon">🌻</div>
+            <h2>Happy Birthday, Babyy!</h2>
+            <p>I made this for you, so you will have a digital proof of how much you mean to me!</p>
+            <button class="popup-close-btn" onclick="closePopup()">Open mo na💛</button>
+        </div>
+    </div>
+
+    <!-- Floating Background Elements -->
+    <div class="floating-bg">
+        <div class="floating-element">🌻</div>
+        <div class="floating-element">π</div>
+        <div class="floating-element">✨</div>
+        <div class="floating-element">∫</div>
+        <div class="floating-element">★</div>
+        <div class="floating-element">Σ</div>
+        <div class="floating-element">♡</div>
+        <div class="floating-element">∞</div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-sunflower">🌻</div>
+            <h1 class="fade-up">To my Future Mathematician Who Will Make Mathematics Feel Less Scary <br> Happy Happy Birthday!!!!</h1>
+            <p class="fade-up fade-up-delay-1">Enjoy your Day, Babyyyy</p>
+            <div class="scroll-indicator">↓</div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2 class="section-title">I'm So Proud Of You</h2>
+            <div class="about-container">
+                <div class="about-card">
+                    <div class="card-front">
+                        <div class="about-card-icon">💛</div>
+                        <h3>I am rooting for you/us</h3>
+                        <p>I know you're still doubting abour your course, but it's okay. You're still on your path, baby, and I am rooting for you!</p>
+                    </div>
+                    <div class="card-back" style="background-image: url('assets/slot_1.jpg');"></div>
+                </div>
+                <div class="about-card">
+                    <div class="card-front">
+                        <div class="about-card-icon">📚</div>
+                        <h3>Your Dream Will Be my Dream as Well</h3>
+                        <p>To become a teacher who doesn't just teach equations—but teaches students that they're capable, worthy, and brave enough to try.</p>
+                    </div>
+                    <div class="card-back" style="background-image: url('assets/slot_2.jpg');"></div>
+                </div>
+                <div class="about-card">
+                    <div class="card-front">
+                        <div class="about-card-icon">⭐</div>
+                        <h3>You're on the Right Path</h3>
+                        <p>I know you're facing challenges, but you're growing stronger every day baby, malayo na pero malayo kana at sobrang proud ako sayo.</p>
+                    </div>
+                    <div class="card-back" style="background-image: url('assets/slot_3.jpg');"></div>
+                </div>
+            </div>
+            <div class="appreciation">
+                <p>✨ HAPPY BIRTHDAY, MY BABY, FUTURE GIRLFIEND, MY FUTURE MATHEMATICIAN, FUTURE WIFE, FUTURE MOM OF MY KIDS, FUTURE EDUCATOR, THE ONE I WILL TAKE TO THE CHURCH ALTAR TO BE MY WIFE.✨</p>
+            </div>
+        </section>
+
+        <!-- Motivation Section -->
+        <section class="motivation">
+            <h2 class="section-title">ALWAYS REMEMBER YOU HAVE ME</h2>
+            <div class="motivation-grid">
+                <div class="sticky-note">
+                    <p>Your number one fan.</p>
+                </div>
+                <div class="sticky-note">
+                    <p>The one who will always remind to you how awesome you are..</p>
+                </div>
+                <div class="sticky-note">
+                    <p>The women who deserve respect, love and a genuine intention.</p>
+                </div>
+                <div class="sticky-note">
+                    <p>Despite of how busy I am in my career and life, you're always included and considered on my plans.</p>
+                </div>
+                <div class="sticky-note">
+                    <p>Busy will never be a reason to not give you time when you needed it.</p>
+                </div>
+                <div class="sticky-note">
+                    <p>Will hold your hand and heart, despite of how chaotic we will be.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>From your Future Boyfriend | Childish Suitor | Future Husband</p>
+        <div class="footer-icons">
+            <span>🌻</span>
+            <span class="heart-pulse">💛</span>
+            <span>✨</span>
+        </div>
+    </footer>
+
+    <script>
+        // Show popup when page loads
+        window.addEventListener('load', function() {
+            const popup = document.getElementById('sunflowerPopup');
+            popup.classList.add('show');
+        });
+
+        // Close popup function
+        function closePopup() {
+            const popup = document.getElementById('sunflowerPopup');
+            popup.classList.remove('show');
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 300);
+        }
+
+        // Allow closing popup by clicking outside the content
+        window.addEventListener('click', function(event) {
+            const popup = document.getElementById('sunflowerPopup');
+            if (event.target === popup) {
+                closePopup();
+            }
+        });
+    </script>
+</body>
+</html>
